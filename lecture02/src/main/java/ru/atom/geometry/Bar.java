@@ -3,7 +3,10 @@ package ru.atom.geometry;
 import java.util.Objects;
 
 public class Bar implements Collider {
-    private int firstCornerX, firstCornerY, secondCornerX, secondCornerY;
+    private int firstCornerX;
+    private int firstCornerY;
+    private int secondCornerX;
+    private int secondCornerY;
 
     public Bar(int firstCornerX, int firstCornerY, int secondCornerX, int secondCornerY) {
         this.firstCornerX = firstCornerX;
@@ -17,12 +20,13 @@ public class Bar implements Collider {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bar bar = (Bar) o;
-        if ((this.getMaxX() == bar.getMaxX()) && this.getMinX() == bar.getMinX() && this.getMaxY() == bar.getMaxY() && this.getMinY() == bar.getMinY())
+        if ((this.getMaxX() == bar.getMaxX()) && this.getMinX() == bar.getMinX() && this.getMaxY() == bar.getMaxY()
+                && this.getMinY() == bar.getMinY())
             return true;
-        return firstCornerX == bar.firstCornerX &&
-                firstCornerY == bar.firstCornerY &&
-                secondCornerX == bar.secondCornerX &&
-                secondCornerY == bar.secondCornerY;
+        return firstCornerX == bar.firstCornerX
+                && firstCornerY == bar.firstCornerY
+                && secondCornerX == bar.secondCornerX
+                && secondCornerY == bar.secondCornerY;
     }
 
     @Override
@@ -42,8 +46,10 @@ public class Bar implements Collider {
         if (other instanceof Bar) {
             Bar bar = (Bar) other;
             if (equals(bar)) return true;
-            if ((this.getMaxX() >= bar.getMinX()) && ((this.getMinX() <= bar.getMaxX()))
-                    && (this.getMaxY() >= bar.getMinY()) && (this.getMinY() <= bar.getMaxY())) return true;
+            if ((this.getMaxX() >= bar.getMinX())
+                    && ((this.getMinX() <= bar.getMaxX()))
+                    && (this.getMaxY() >= bar.getMinY())
+                    && (this.getMinY() <= bar.getMaxY())) return true;
         }
         return false;
     }
